@@ -37,6 +37,9 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const routes = require('./controllers/');
+const sequelize = require('.config/connection');
+const express = require('express');
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', hbs.engine);
