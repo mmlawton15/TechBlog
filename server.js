@@ -32,15 +32,3 @@
 // WHEN I am idle on the site for more than a set time
 // THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 
-const { appendFile } = require('fs');
-const path = require('path');
-const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
-const routes = require('./controllers/');
-const sequelize = require('.config/connection');
-const express = require('express');
-
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');

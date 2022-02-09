@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/mmlawton15/challenge-fourteen-techblog#readme",
   "dependencies": {
-    "express-handlebars": "^6.0.2"
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.1"
   }
 }
