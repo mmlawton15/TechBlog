@@ -1,0 +1,23 @@
+{
+  "name": "challenge-fourteen-techblog",
+  "version": "1.0.0",
+  "description": "My repository for Challenge 14 of the bootcamp, where we had to build a full stack application for a tech blog from scratch",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmlawton15/challenge-fourteen-techblog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmlawton15/challenge-fourteen-techblog/issues"
+  },
+  "homepage": "https://github.com/mmlawton15/challenge-fourteen-techblog#readme",
+  "dependencies": {
+    "express-handlebars": "^6.0.2"
+  }
+}
