@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mmlawton15/challenge-fourteen-techblog#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
