@@ -65,6 +65,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 //might want to delete force in future
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Listening!'));
 });
