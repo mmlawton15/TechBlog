@@ -65,6 +65,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 //might want to delete force in future
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false }).then(() => { //CAUSING TABLE PROBLEMS FIX HERE
   app.listen(PORT, () => console.log('Listening!'));
 });
