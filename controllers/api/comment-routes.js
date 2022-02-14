@@ -1,10 +1,17 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
+//FIND ALL COMMENTS
 router.get('/', (req, res) => {
-
+    Comment.findAll()
+    .then(dbCommentData => res.json(dbCommentData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
+//CREATE A COMMENT
 router.post('/', (req, res) => {
     Comment.create({
         comment_text: req.body.comment_text,
