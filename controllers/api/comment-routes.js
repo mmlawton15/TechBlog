@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
+
 //FIND ALL COMMENTS
 router.get('/', (req, res) => {
     Comment.findAll()
@@ -26,7 +27,7 @@ router.post('/', (req, res) => {
 });
 
 //DELETE A COMMENT
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
     Comment.destroy({
       where: {
         id: req.params.id
