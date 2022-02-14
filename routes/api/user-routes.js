@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
+//GET ALL USERS
 router.get('/', (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] }
@@ -12,12 +13,27 @@ router.get('/', (req, res) => {
   });
 });
 
+//GET ONE POST
 router.get('/:id', (req, res) => {
     User.findOne({
       attributes: { exclude: ['password'] },
       where: {
         id: req.params.id
-      }
+      },
+      include: [
+        {
+          model: Post,
+          attributes: ['id', 'title', 'post_url', 'created_at']
+        },
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'created_at'],
+          include: {
+            model: Post,
+            attributes: ['title']
+          }
+        }
+      ]
     })
       .then(dbUserData => {
         if (!dbUserData) {
@@ -32,6 +48,7 @@ router.get('/:id', (req, res) => {
       });
 });
 
+//CREATE A POST
 router.post('/', (req, res) => {
     User.create({
       username: req.body.username,
@@ -45,6 +62,7 @@ router.post('/', (req, res) => {
     });
 });
 
+//LOGIN TO SITE
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -64,6 +82,7 @@ router.post('/login', (req, res) => {
   })
 })
 
+//UPDATE A USER
 router.put('/:id', (req, res) => {
     User.update(req.body, {
       individualHooks: true,
@@ -84,6 +103,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//DELETE A USER
 router.delete('/:id', (req, res) => {
     User.destroy({
       where: {
