@@ -5,18 +5,20 @@ THEN I am taken to the homepage
 WHEN I click on the homepage option in the navigation
 THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created --}}
 <ol class="post-list">
-  <li>
-    <article class="post">
-      <div class="title">
-        <a href="{{post_url}}" target="_blank">{{title}}</a>
-        <span>({{post_url}})</span>
-      </div>
-      <div class="meta">
-        {{vote_count}} point(s) by {{user.username}} on
-        {{created_at}}
-        |
-        <a href="/post/{{id}}">{{comments.length}} comment(s)</a>
-      </div>
-    </article>
-  </li>
+    {{#each posts as |post|}}
+    <li>
+        <article class="post">
+        <div class="title">
+            <a href="{{post_url}}" target="_blank">{{title}}</a>
+            <span>({{post.post_url}})</span>
+        </div>
+        <div class="meta">
+            by {{post.user.username}} on
+            {{post.created_at}}
+            |
+            <a href="/post/{{id}}">{{post.comments.length}} comment(s)</a>
+        </div>
+        </article>
+    </li>
+    {{/each}}
 </ol>
