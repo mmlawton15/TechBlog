@@ -9,3 +9,10 @@
 // THEN I am prompted to enter my username and password
 // WHEN I am signed in to the site
 // THEN I see navigation links for the homepage, the dashboard, and the option to log out
+
+function signupFormHandler(event) {
+    event.preventDefault();
+  
+}
+
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
