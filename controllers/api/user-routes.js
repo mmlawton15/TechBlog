@@ -55,12 +55,16 @@ router.post('/', (req, res) => {
       email: req.body.email,
       password: req.body.password
     })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+    .then(dbUserData => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+    
+        res.json(dbUserData);
+      });
+    })
+})
 
 //USER LOGIN
 router.post('/login', (req, res) => {
@@ -70,17 +74,40 @@ router.post('/login', (req, res) => {
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email!' });
+      res.status(400).json({ message: 'No user with that email address!' });
       return;
     }
+
     const validPassword = dbUserData.checkPassword(req.body.password);
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect password '});
+      res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
-    res.json({ user: dbUserData, message: 'Login Successful' });
-  })
-})
+
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
+  });
+});
+
+
+//LOGOUT OF SITE
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
+
 
 //UPDATE A USER
 router.put('/:id', (req, res) => {
