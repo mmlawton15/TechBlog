@@ -27,12 +27,14 @@
 // WHEN I am idle on the site for more than a set time
 // THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 
+
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({helpers});
 const app = express();
 const PORT = process.env.PORT || 3001;
 const session = require('express-session');
@@ -46,6 +48,7 @@ const sess = {
     db: sequelize
   })
 };
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
