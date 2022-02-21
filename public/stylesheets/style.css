@@ -6,23 +6,24 @@
     height: 100%;
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Monaco';
     color: #333;
+    background-color: #e1f4cb;
   }
   
   a {
     text-decoration: none;
-    color: #225ca3;
+    color: #354f52;
     font-weight: bold;
     transition: color .1s;
   }
   
   a:hover {
-    color: #3486eb;
+    color: #358600;
   }
   
   button {
-    background-color: #225ca3;
+    background-color: #354f52;
     border: 0;
     padding: 1%;
     color: white;
@@ -33,7 +34,7 @@
   }
   
   button:hover {
-    background-color: #3486eb;
+    background-color: #358600;
   }
   
   .post-list {
@@ -49,7 +50,7 @@
   
   textarea:focus, input:focus {
     outline: none;
-    border: 1px solid #3486eb;
+    border: 1px solid #358600;
   }
   
   textarea {
@@ -97,7 +98,7 @@
     padding: 0;
     cursor: pointer;
     text-decoration: none;
-    color: #225ca3;
+    color: #354f52;
     font-size: 100%;
     font-weight: bold;
     transition: color .1s;
@@ -106,7 +107,7 @@
   
   .btn-no-style:hover {
     background: none;
-    color: #3486eb;
+    color: #358600;
   }
   
   .delete-post-btn {
@@ -132,6 +133,7 @@
     display: block;
     margin: -1.5% 0 2% 0;
   }
+
   
   .comment-form {
     margin-bottom: 5%;
