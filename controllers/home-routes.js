@@ -3,7 +3,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
-//GET ALL POSTS FOR HOMEPAGE
+//GET POSTS FOR HOMEPAGE
 router.get('/', (req, res) => {
     console.log(req.session);
     Post.findAll({
@@ -36,16 +36,6 @@ router.get('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
-});
-
-
-//LOGIN ROUTE
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-    res.render('login');
 });
 
 
@@ -91,6 +81,15 @@ router.get('/post/:id', (req, res) => {
           console.log(err);
           res.status(500).json(err);
         });
+});
+
+//LOGIN ROUTE
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
 });
 
 module.exports = router;
