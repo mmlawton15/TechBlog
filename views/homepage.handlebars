@@ -1,3 +1,9 @@
+{{!-- needs to redirect to homepage, show existing blog posts, and prompt user to sign up or sign in if they click on any other links on the page
+THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
+WHEN I click on the homepage option
+THEN I am taken to the homepage
+WHEN I click on the homepage option in the navigation
+THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created --}}
 <ol class="post-list">
     {{#each posts as |post|}}
     <li>
