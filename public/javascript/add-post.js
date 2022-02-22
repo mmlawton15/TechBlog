@@ -1,4 +1,26 @@
-// WHEN I click on the button to add a new blog post
-// THEN I am prompted to enter both a title and contents for my blog post
-// WHEN I click on the button to create a new blog post
-// THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
+async function newFormHandler(event) {
+  event.preventDefault();
+
+  const title = document.querySelector('input[name="post-title"]').value;
+  const post_url = document.querySelector('input[name="post-url"]').value;
+
+  const response = await fetch(`/api/posts`, {
+    method: 'POST',
+    body: JSON.stringify({
+      title,
+      post_url
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    document.location.replace('/dashboard');
+  } else {
+    alert(response.statusText);
+  }
+}
+
+document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+  
